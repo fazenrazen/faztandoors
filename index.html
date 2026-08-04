@@ -87,9 +87,15 @@ section{scroll-margin-top:78px}
 .sec-h p{font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--smoke);margin:0 0 0 auto}
 @media(max-width:760px){.sec-h p{margin-left:0;width:100%}}
 
+/* photography — wells show a caption underneath if the image is missing */
+.shot{position:relative;background:var(--char);overflow:hidden}
+.shot::before{content:attr(data-label);position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:22px;font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--smoke);line-height:1.7}
+.shot img{position:relative;width:100%;height:100%;object-fit:cover;display:block}
+
 /* the cut — hero product */
 .cut{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
-.cut-main{background:var(--ash);padding:34px 30px;display:flex;flex-direction:column;gap:14px}
+.cut .shot{aspect-ratio:4/5;min-height:340px}
+.cut-main{background:var(--ash);padding:34px 30px;display:flex;flex-direction:column;gap:14px;justify-content:center}
 .cut-main .idx{font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--ember);font-weight:600}
 .cut-main h3{font-family:var(--display);font-weight:800;font-size:34px;letter-spacing:-.035em;margin:0;text-transform:uppercase;line-height:.95}
 .cut-main p{font-size:15.5px;color:var(--smoke);font-weight:300;line-height:1.55;margin:0;max-width:44ch}
@@ -100,19 +106,18 @@ section{scroll-margin-top:78px}
 .spec div b{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--smoke);display:block;margin-bottom:4px;font-weight:500}
 .spec div span{font-size:15px}
 
-.sizes{background:var(--ash);padding:34px 30px;display:flex;flex-direction:column;gap:0}
-.size{display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:15px 0;border-bottom:1px solid var(--line)}
-.size:last-of-type{border-bottom:0}
+/* sizes, side by side under the cut */
+.sizes{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-top:0}
+.size{background:var(--ash);padding:22px 24px;display:flex;flex-direction:column;gap:7px}
 .size-n{font-family:var(--display);font-weight:700;font-size:17px;text-transform:uppercase;letter-spacing:-.015em}
-.size-n small{display:block;font-family:var(--body);font-weight:300;font-size:13.5px;color:var(--smoke);text-transform:none;letter-spacing:0;margin-top:3px}
-.size-p{font-family:var(--display);font-weight:800;font-size:26px;letter-spacing:-.03em;color:var(--turmeric);white-space:nowrap}
+.size-n small{display:block;font-family:var(--body);font-weight:300;font-size:13.5px;color:var(--smoke);text-transform:none;letter-spacing:0;margin-top:4px;line-height:1.4}
+.size-p{font-family:var(--display);font-weight:800;font-size:30px;letter-spacing:-.03em;color:var(--turmeric);margin-top:auto;padding-top:10px}
 
-/* dark slots */
-.slots{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-top:0}
-.slot{background:var(--ash);padding:20px;opacity:.42}
-.slot .idx{font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--smoke);font-weight:600;margin-bottom:8px}
-.slot h4{font-family:var(--display);font-weight:700;font-size:16px;margin:0 0 5px;text-transform:uppercase;letter-spacing:-.015em}
-.slot p{font-size:12.5px;color:var(--smoke);font-weight:300;margin:0;line-height:1.4}
+/* three-shot strip */
+.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.strip figure{margin:0;background:var(--ash);display:flex;flex-direction:column}
+.strip .shot{aspect-ratio:1}
+.strip figcaption{padding:14px 16px;font-family:var(--mono);font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--smoke)}
 
 /* steps */
 .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(232px,1fr));gap:26px}
@@ -219,12 +224,16 @@ footer .wrap{display:flex;flex-direction:column;align-items:flex-start;gap:22px}
   <section class="sec" id="board">
     <div class="sec-h">
       <h2>The board</h2>
-      <p>One marinade lit · four slots to come</p>
+      <p>One marinade · that's the whole menu</p>
     </div>
 
     <div class="cut">
+      <div class="shot" data-label="Add img/classic-red.jpg — thighs coming off the coals, char visible">
+        <img src="img/classic-red.jpg" alt="Tandoori chicken thighs coming off the coals, edges charred and glossy" loading="lazy" width="900" height="1125">
+      </div>
+
       <div class="cut-main">
-        <div class="idx">01 / 05 — ON THE FIRE</div>
+        <div class="idx">ON THE FIRE</div>
         <h3>Classic Red</h3>
         <div class="heat" role="img" aria-label="Heat 3 of 3"><i class="on"></i><i class="on"></i><i class="on"></i></div>
         <p>
@@ -239,35 +248,54 @@ footer .wrap{display:flex;flex-direction:column;align-items:flex-start;gap:22px}
           <div><b>Contains</b><span>Milk</span></div>
         </div>
       </div>
+    </div>
 
-      <div class="sizes">
-        <div class="size">
-          <div class="size-n">Half pack<small>1 lb · two people, or one with leftovers</small></div>
-          <div class="size-p">$30</div>
-        </div>
-        <div class="size">
-          <div class="size-n">Family pack<small>2 lb · four people, the usual order</small></div>
-          <div class="size-p">$55</div>
-        </div>
-        <div class="size">
-          <div class="size-n">Party pack<small>5 lb · ten people, order by Monday</small></div>
-          <div class="size-p">$130</div>
-        </div>
-        <p class="microcopy">Weights are raw. Add naan, lime achar or chaat masala at checkout.</p>
+    <div class="sizes">
+      <div class="size">
+        <div class="size-n">Half pack<small>1 lb · two people, or one with leftovers</small></div>
+        <div class="size-p">$30</div>
+      </div>
+      <div class="size">
+        <div class="size-n">Family pack<small>2 lb · four people, the usual order</small></div>
+        <div class="size-p">$55</div>
+      </div>
+      <div class="size">
+        <div class="size-n">Party pack<small>5 lb · ten people, order by Monday</small></div>
+        <div class="size-p">$130</div>
       </div>
     </div>
 
-    <div class="slots">
-      <div class="slot"><div class="idx">02 / 05</div><h4>Malai</h4><p>Cashew cream, white pepper, cardamom. No chili — for the kids.</p></div>
-      <div class="slot"><div class="idx">03 / 05</div><h4>Hariyali</h4><p>Mint, cilantro, green chili, spinach.</p></div>
-      <div class="slot"><div class="idx">04 / 05</div><h4>Achari</h4><p>Mustard oil, fennel, nigella, pickling spice.</p></div>
-      <div class="slot"><div class="idx">05 / 05</div><h4>Kali Mirch</h4><p>Cracked black pepper, yogurt, mace.</p></div>
-    </div>
     <p class="microcopy">
-      Five is the ceiling — Colorado's cottage food law allows one refrigerated product with up to
-      five variations. We'd rather light one properly than five badly, so the rest come on as
-      they're ready.
+      Weights are raw. Naan, lime achar and chaat masala at checkout. Colorado's cottage food law
+      would let us run five variations — we'd rather cook one properly than five badly.
     </p>
+  </section>
+
+  <section class="sec" id="kitchen">
+    <div class="sec-h">
+      <h2>The week</h2>
+      <p>Wednesday to Thursday</p>
+    </div>
+    <div class="strip">
+      <figure>
+        <div class="shot" data-label="Add img/marinate.jpg — thighs and marinade in the bag">
+          <img src="img/marinate.jpg" alt="Chicken thighs in yogurt marinade, cinnamon sticks in the bag" loading="lazy" width="700" height="700">
+        </div>
+        <figcaption>Wed — fourteen hours in yogurt</figcaption>
+      </figure>
+      <figure>
+        <div class="shot" data-label="Add img/fire.jpg — the tandoor lit, coals glowing">
+          <img src="img/fire.jpg" alt="The tandoor lit, coals glowing under the skewers" loading="lazy" width="700" height="700">
+        </div>
+        <figcaption>Thu — one fire, four hours</figcaption>
+      </figure>
+      <figure>
+        <div class="shot" data-label="Add img/pack.jpg — a finished family pack, labelled">
+          <img src="img/pack.jpg" alt="A finished family pack, labelled and ready for collection" loading="lazy" width="700" height="700">
+        </div>
+        <figcaption>Thu 5pm — in your hands</figcaption>
+      </figure>
+    </div>
   </section>
 
   <section class="sec" id="how">

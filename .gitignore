@@ -1,0 +1,23 @@
+# Secrets — never commit these
+.env
+.env.*
+*.key
+*.pem
+secrets.json
+
+# Netlify
+.netlify/
+
+# OS cruft
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*~
+
+# Dependencies (not used today, here in case the site grows)
+node_modules/

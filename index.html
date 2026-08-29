@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Faz Tandoors — Tandoori chicken. Boulder. Thursdays.</title>
+<meta name="description" content="Boneless thighs, marinated overnight, cooked fresh every Thursday in Boulder. Collection only.">
+<meta property="og:title" content="Faz Tandoors">
+<meta property="og:description" content="Tandoori chicken. Boulder. Thursdays.">
+<meta property="og:image" content="img/classic-red.jpeg">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#1A0B08">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rozha+One&family=Karla:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#1A0B08;
+  --bg2:#24100C;
+  --ember:#C7381F;
+  --brass:#C9924A;
+  --cream:#F4E7D8;
+  --mute:#A08574;
+  --rule:rgba(244,231,216,.13);
+  --display:'Rozha One',Georgia,serif;
+  --body:'Karla',system-ui,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--cream);font-family:var(--body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+
+/* height:auto is the fix — without it a scaled-down image keeps its
+   attribute height and distorts. Never remove it. */
+img{max-width:100%;height:auto;display:block}
+
+:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
+.wrap{max-width:1000px;margin:0 auto;padding:0 24px}
+.eyebrow{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--brass);font-weight:600;margin:0 0 16px}
+
+/* hero: photo fills a fixed-ratio box, never stretches */
+.hero{display:grid;grid-template-columns:1fr 1fr;align-items:stretch}
+.hero-txt{display:flex;flex-direction:column;justify-content:center;padding:60px 48px;background:linear-gradient(160deg,var(--bg2),var(--bg))}
+.hero-img{position:relative;background:#241009;min-height:460px;overflow:hidden}
+.hero-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 45%}
+.logo{font-family:var(--display);font-size:clamp(48px,6.6vw,84px);line-height:.96;margin:0 0 12px;color:var(--cream)}
+.tagline{font-size:clamp(17px,2vw,21px);font-weight:300;color:var(--mute);margin:0 0 32px;max-width:26ch}
+
+form{display:flex;gap:9px;flex-wrap:wrap;max-width:420px}
+input{flex:1;min-width:190px;background:rgba(244,231,216,.06);border:1px solid var(--rule);color:var(--cream);padding:14px 16px;font-family:var(--body);font-size:16px;border-radius:2px}
+input::placeholder{color:var(--mute)}
+input:focus{outline:none;border-color:var(--ember);background:rgba(244,231,216,.09)}
+.btn{background:var(--ember);color:#fff;border:1px solid var(--ember);padding:14px 28px;font-family:var(--body);font-weight:600;font-size:15px;letter-spacing:.03em;border-radius:2px;cursor:pointer;transition:background .16s;white-space:nowrap}
+.btn:hover{background:#E04326}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.msg{min-height:22px;margin:11px 0 0;font-size:14.5px}
+.msg.ok{color:#9CBE86}
+.msg.err{color:#F09A88}
+.fine{font-size:13px;color:var(--mute);margin:9px 0 0}
+.social{margin:26px 0 0;font-size:14.5px}
+.social a{color:var(--brass);text-decoration:none;border-bottom:1px solid rgba(201,146,74,.4);padding-bottom:1px}
+.social a:hover{border-color:var(--brass)}
+
+/* menu + one supporting photo */
+.menu{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;padding:72px 0}
+h2{font-family:var(--display);font-size:clamp(29px,4.2vw,42px);line-height:1.08;margin:0 0 6px;color:var(--cream)}
+.sub{color:var(--mute);font-weight:300;margin:0 0 28px;max-width:42ch}
+.item{display:flex;align-items:baseline;gap:14px;padding:15px 0;border-bottom:1px solid var(--rule)}
+.item:last-child{border-bottom:0}
+.item b{font-size:18px;font-weight:600;white-space:nowrap}
+.item b span{color:var(--mute);font-weight:300;font-size:15px}
+.item i{flex:1;border-bottom:1px dotted var(--rule);transform:translateY(-4px)}
+.item em{font-family:var(--display);font-style:normal;font-size:27px;color:var(--brass)}
+
+.frame{position:relative;aspect-ratio:4/5;background:#241009;overflow:hidden}
+.frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:32px;padding:0 0 66px}
+.step{border-top:2px solid var(--ember);padding-top:16px}
+.step b{display:block;font-family:var(--display);font-size:23px;margin-bottom:2px;color:var(--cream)}
+.step span{color:var(--mute);font-weight:300;font-size:15.5px}
+
+.facts{background:var(--bg2);padding:50px 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.facts dl{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:28px;margin:0}
+.facts dt{font-family:var(--display);font-size:21px;color:var(--brass);margin-bottom:5px}
+.facts dd{margin:0;font-weight:300;font-size:15.5px;color:var(--mute)}
+
+.closer{background:var(--ember);padding:58px 0}
+.closer h2{margin-bottom:8px;color:#fff}
+.closer p{margin:0 0 28px;font-weight:300;color:rgba(255,255,255,.9)}
+.closer input{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.35);color:#fff}
+.closer input::placeholder{color:rgba(255,255,255,.65)}
+.closer input:focus{border-color:#fff;background:rgba(255,255,255,.2)}
+.closer .btn{background:#fff;color:var(--ember);border-color:#fff}
+.closer .btn:hover{background:var(--cream)}
+.closer .msg.ok{color:#E8F5DC}
+.closer .msg.err{color:#FFE0D8}
+
+footer{background:var(--bg);padding:32px 0 44px;font-size:12.5px;font-weight:300;line-height:1.55;color:#8A7264}
+footer p{margin:0 0 12px;max-width:76ch}
+footer a{color:var(--brass)}
+
+@media(max-width:820px){
+  .hero{grid-template-columns:1fr}
+  .hero-img{order:-1;min-height:0;aspect-ratio:4/3}
+  .hero-txt{padding:36px 24px 44px}
+  .menu{grid-template-columns:1fr;gap:34px;padding:48px 0}
+  .frame{aspect-ratio:3/2}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-txt">
+    <p class="eyebrow">Opening January · Boulder</p>
+    <h1 class="logo">Faz Tandoors</h1>
+    <p class="tagline">Tandoori chicken. One cook a week. Collected the same evening.</p>
+    <form id="f1" novalidate>
+      <input type="email" id="e1" placeholder="your email" aria-label="Email address" autocomplete="email" required>
+      <button class="btn" type="submit">Join the list</button>
+    </form>
+    <p class="msg" id="m1" role="status" aria-live="polite"></p>
+    <p class="fine">First fifty get first pick. One email a week, never more.</p>
+    <p class="social"><a href="https://instagram.com/faztandoors" target="_blank" rel="noopener">Follow @faztandoors</a></p>
+  </div>
+  <div class="hero-img">
+    <img src="img/classic-red.jpeg" alt="Marinated chicken thighs charring on the grill" fetchpriority="high">
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="menu">
+    <div>
+      <h2>Boneless thigh, fourteen hours in yogurt and spice.</h2>
+      <p class="sub">Cooked fresh on Thursday. Never reheated, never frozen.</p>
+      <div class="item"><b>Half pack <span>· 1 lb</span></b><i></i><em>$30</em></div>
+      <div class="item"><b>Family pack <span>· 2 lb</span></b><i></i><em>$55</em></div>
+      <div class="item"><b>Party pack <span>· 5 lb</span></b><i></i><em>$130</em></div>
+    </div>
+    <div class="frame">
+      <img src="img/pack.jpeg" alt="A finished tray of tandoori chicken with grilled onions" loading="lazy">
+    </div>
+  </div>
+
+  <div class="steps">
+    <div class="step"><b>Monday–Tuesday</b><span>You order</span></div>
+    <div class="step"><b>Thursday</b><span>We cook</span></div>
+    <div class="step"><b>5–6:30pm</b><span>You collect</span></div>
+  </div>
+</div>
+
+<section class="facts">
+  <div class="wrap">
+    <dl>
+      <div><dt>Where?</dt><dd>Our home kitchen in Boulder. Registered cottage food, not state inspected.</dd></div>
+      <div><dt>Delivery?</dt><dd>No. Collection only, in Boulder.</dd></div>
+      <div><dt>Allergies?</dt><dd>Contains milk. The kitchen also handles nuts, wheat and sesame.</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="closer">
+  <div class="wrap">
+    <h2>Be there for the first one.</h2>
+    <p>Fifty places, then the list closes until spring.</p>
+    <form id="f2" novalidate>
+      <input type="email" id="e2" placeholder="your email" aria-label="Email address" autocomplete="email" required>
+      <button class="btn" type="submit">Join the list</button>
+    </form>
+    <p class="msg" id="m2" role="status" aria-live="polite"></p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>Produced in a home kitchen that is not subject to state licensure or inspection, and that may also
+      process common food allergens such as tree nuts, peanuts, eggs, soy, wheat, milk, fish and shellfish.
+      Not intended for resale. Sold only within Colorado.</p>
+    <p>Faz Tandoors · Boulder, Colorado · <a href="mailto:hello@faztandoors.com">hello@faztandoors.com</a>
+      · <a href="https://instagram.com/faztandoors" target="_blank" rel="noopener">@faztandoors</a></p>
+  </div>
+</footer>
+
+<script>
+var CONFIG = {
+  BUTTONDOWN_USERNAME: "faztandoors",   // public username - never an API token
+  DEFAULT_TAG: "website"
+};
+
+/* If an image 404s under img/, try the repo root once before giving up. */
+(function () {
+  var imgs = document.querySelectorAll("img[src^='img/']");
+  Array.prototype.forEach.call(imgs, function (im) {
+    im.addEventListener("error", function handle() {
+      im.removeEventListener("error", handle);
+      im.src = im.getAttribute("src").replace(/^img\//, "");
+    });
+  });
+})();
+
+(function () {
+  var seen = [];
+  var ok = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+  var tag = CONFIG.DEFAULT_TAG;
+  try {
+    var q = new URLSearchParams(location.search).get("tag");
+    if (q) tag = q.slice(0, 60);
+  } catch (e) { /* older browser, keep the default */ }
+
+  function wire(fid, iid, mid, src) {
+    var f = document.getElementById(fid);
+    if (!f) return;
+    var i = document.getElementById(iid);
+    var m = document.getElementById(mid);
+
+    f.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var v = i.value.trim();
+      m.className = "msg";
+
+      if (!ok.test(v)) {
+        m.className = "msg err";
+        m.textContent = "Check that address.";
+        i.focus();
+        return;
+      }
+      if (seen.indexOf(v.toLowerCase()) > -1) {
+        m.className = "msg ok";
+        m.textContent = "Already sent - check your inbox.";
+        return;
+      }
+
+      var b = f.querySelector("button");
+      b.disabled = true;
+      b.textContent = "Sending...";
+
+      function done(good) {
+        b.disabled = false;
+        b.textContent = "Join the list";
+        if (good) {
+          seen.push(v.toLowerCase());
+          f.reset();
+          m.className = "msg ok";
+          m.textContent = "Now click the link in your email.";
+        } else {
+          m.className = "msg err";
+          m.textContent = "Didn't send. Try hello@faztandoors.com.";
+        }
+      }
+
+      if (!CONFIG.BUTTONDOWN_USERNAME) {
+        setTimeout(function () { done(true); }, 400);
+        return;
+      }
+
+      var d = new FormData();
+      d.append("email", v);
+      d.append("embed", "1");
+      d.append("tag", tag);
+      d.append("tag", src);
+
+      fetch("https://buttondown.com/api/emails/embed-subscribe/" + encodeURIComponent(CONFIG.BUTTONDOWN_USERNAME),
+            { method: "POST", mode: "no-cors", body: d })
+        .then(function () { done(true); })
+        .catch(function () { done(false); });
+    });
+  }
+
+  wire("f1", "e1", "m1", "form-hero");
+  wire("f2", "e2", "m2", "form-footer");
+})();
+</script>
+</body>
+</html>
